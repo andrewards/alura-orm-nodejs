@@ -1,0 +1,25 @@
+{
+  "name": "projeto",
+  "version": "1.0.0",
+  "description": "",
+  "main": "api/index.js",
+  "scripts": {
+    "start": "node .",
+    "debug": "node --inspect .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrewards/alura-orm-nodejs.git"
+  },
+  "keywords": [],
+  "author": "&Rewards",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andrewards/alura-orm-nodejs/issues"
+  },
+  "homepage": "https://github.com/andrewards/alura-orm-nodejs#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
