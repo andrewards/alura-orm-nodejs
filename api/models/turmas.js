@@ -14,8 +14,12 @@ module.exports = (sequelize, DataTypes) => {
       turmas.hasMany(models.matriculas, {
         foreignKey: 'turma_id',
       });
-      turmas.belongsTo(models.pessoas);
-      turmas.belongsTo(models.niveis);
+      turmas.belongsTo(models.pessoas, {
+        foreignKey: 'docente_id',
+      });
+      turmas.belongsTo(models.niveis, {
+        foreignKey: 'nivel_id',
+      });
     }
   };
   turmas.init({
