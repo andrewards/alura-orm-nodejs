@@ -1,6 +1,7 @@
 const express = require('express');
+const pessoas = require('./pessoas');
 
 module.exports = app => {
     app.use(express.json());
-    app.get('/', (req, res) => res.send('Hello, World!'));
+    app.use(pessoas);
 };
