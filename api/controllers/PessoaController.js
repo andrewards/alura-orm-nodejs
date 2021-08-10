@@ -14,6 +14,17 @@ class PessoaController {
         }
     }
 
+    static criaMatricula = async (req, res) => {
+        try {
+            const { estudanteId } = req.params;
+            const novaMatricula = { ...req.body, estudante_id: Number(estudanteId) };
+            const novaMatriculaCriada = await database.matriculas.create(novaMatricula);
+            return res.status(200).json(novaMatriculaCriada);
+        } catch(err) {
+            return res.status(500).json(err.message);
+        }
+    }
+
     // READ
 
     static pegaTodasAsPessoas = async (req, res) => {
@@ -34,6 +45,21 @@ class PessoaController {
                 },
             });
             return res.status(200).json(pessoa);
+        } catch(err) {
+            return res.status(500).json(err.message);
+        }
+    }
+
+    static pegaUmaMatricula = async (req, res) => {
+        try {
+            const { estudanteId, matriculaId } = req.params;
+            const matricula = await database.matriculas.findOne({
+                where: {
+                    id: Number(matriculaId),
+                    estudante_id: Number(estudanteId),
+                },
+            });
+            return res.status(200).json(matricula);
         } catch(err) {
             return res.status(500).json(err.message);
         }
@@ -61,6 +87,27 @@ class PessoaController {
         }
     }
 
+    static atualizaMatricula = async (req, res) => {
+        try {
+            const { estudanteId, matriculaId } = req.params;
+            const novasInfos = req.body;
+            await database.matriculas.update(novasInfos, {
+                where: {
+                    id: Number(matriculaId),
+                    estudante_id: Number(estudanteId),
+                },
+            });
+            const matriculaAtualizada = await database.matriculas.findOne({
+                where: {
+                    id: Number(matriculaId),
+                },
+            });
+            return res.status(200).json(matriculaAtualizada);
+        } catch(err) {
+            return res.status(500).json(err.message);
+        }
+    }
+
     // DELETE
 
     static apagaPessoa = async (req, res) => {
@@ -69,6 +116,21 @@ class PessoaController {
             await database.pessoas.destroy({
                 where: {
                     id: Number(id),
+                },
+            });
+            return res.status(204).end();
+        } catch(err) {
+            return res.status(500).json(err.message);
+        }
+    }
+
+    static apagaMatricula = async (req, res) => {
+        try {
+            const { estudanteId, matriculaId } = req.params;
+            await database.matriculas.destroy({
+                where: {
+                    id: Number(matriculaId),
+                    estudante_id: Number(estudanteId),
                 },
             });
             return res.status(204).end();
