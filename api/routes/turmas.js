@@ -12,6 +12,7 @@ router.get('/turmas/:id', TurmaController.pegaUmaTurma);
 
 // UPDATE
 router.patch('/turmas/:id', TurmaController.atualizaTurma);
+router.patch('/turmas/:id/restaura', TurmaController.restauraTurma);
 
 // DELETE
 router.delete('/turmas/:id', TurmaController.apagaTurma);

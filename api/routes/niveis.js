@@ -12,6 +12,7 @@ router.get('/niveis/:id', NivelController.pegaUmNivel);
 
 // UPDATE
 router.patch('/niveis/:id', NivelController.atualizaNivel);
+router.patch('/niveis/:id/restaura', NivelController.restauraNivel);
 
 // DELETE
 router.delete('/niveis/:id', NivelController.apagaNivel);
