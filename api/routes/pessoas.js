@@ -14,6 +14,7 @@ router.get('/pessoas/:estudanteId/matricula/:matriculaId', PessoaController.pega
 
 // UPDATE
 router.patch('/pessoas/:id', PessoaController.atualizaPessoa);
+router.patch('/pessoas/:id/restaura', PessoaController.restauraPessoa);
 router.patch('/pessoas/:estudanteId/matricula/:matriculaId', PessoaController.atualizaMatricula);
 
 // DELETE
