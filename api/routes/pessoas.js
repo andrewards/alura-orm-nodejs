@@ -11,7 +11,8 @@ const router = Router()
     .get('/pessoas', PessoaController.pegaTodasAsPessoasAtivas)
     .get('/pessoas/all', PessoaController.pegaTodasAsPessoas)
     .get('/pessoas/:id', PessoaController.pegaUmaPessoa)
-    .get('/pessoas/:estudanteId/matricula/:matriculaId', PessoaController.pegaUmaMatricula)
+    .get('/pessoas/:estudanteId/matriculas', PessoaController.pegaMatriculas)
+    .get('/pessoas/:estudanteId/matriculas/:matriculaId', PessoaController.pegaUmaMatricula)
 
 // UPDATE
     .patch('/pessoas/:id', PessoaController.atualizaPessoa)
