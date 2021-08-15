@@ -1,4 +1,5 @@
 const database = require('../models');
+const { Op } = require('sequelize');
 
 class TurmaController {
 
@@ -17,8 +18,15 @@ class TurmaController {
     // READ
 
     static pegaTodasAsTurmas = async (req, res) => {
+        const { data_inicial, data_final } = req.query;
+        const where = {};
+
+        (data_inicial || data_final) && (where.data_inicio = {});
+        data_inicial && (where.data_inicio[Op.gte] = data_inicial);
+        data_final && (where.data_inicio[Op.lte] = data_final);
+
         try {
-            const todosAsTurmas = await database.turmas.findAll();
+            const todosAsTurmas = await database.turmas.findAll({ where });
             return res.status(200).json(todosAsTurmas);
         } catch(err) {
             return res.status(500).json(err.message);
