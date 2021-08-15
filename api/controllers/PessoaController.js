@@ -74,6 +74,20 @@ class PessoaController {
         }
     }
 
+    static pegaMatriculas = async (req, res) => {
+        try {
+            const { estudanteId } = req.params;
+            const matriculas = await database.matriculas.findAll({
+                where: {
+                    estudante_id: Number(estudanteId),
+                },
+            });
+            return res.status(200).json(matriculas);
+        } catch(err) {
+            return res.status(500).json(err.message);
+        }
+    }
+
     // UPDATE
 
     static atualizaPessoa = async (req, res) => {
