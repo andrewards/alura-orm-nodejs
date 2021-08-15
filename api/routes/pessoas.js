@@ -9,6 +9,7 @@ const router = Router()
 
 // READ
     .get('/pessoas', PessoaController.pegaTodasAsPessoasAtivas)
+    .get('/pessoas/matriculas/:turmaId/confirmadas', PessoaController.pegaMatriculasPorTurma)
     .get('/pessoas/all', PessoaController.pegaTodasAsPessoas)
     .get('/pessoas/:id', PessoaController.pegaUmaPessoa)
     .get('/pessoas/:estudanteId/matriculas', PessoaController.pegaMatriculas)
