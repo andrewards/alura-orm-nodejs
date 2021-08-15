@@ -8,8 +8,8 @@ const router = Router()
     .post('/pessoas/:estudanteId/matriculas', PessoaController.criaMatricula)
 
 // READ
-    .get('/pessoas', PessoaController.pegaTodasAsPessoasAtivas)
-    .get('/pessoas/all', PessoaController.pegaTodasAsPessoas)
+    .get('/pessoas', PessoaController.pegaTodasAsPessoas)
+    .get('/pessoas/ativas', PessoaController.pegaTodasAsPessoasAtivas)
     .get('/pessoas/:id', PessoaController.pegaUmaPessoa)
     .get('/pessoas/:estudanteId/matriculas', PessoaController.pegaMatriculas)
     .get('/pessoas/:estudanteId/matriculas/:matriculaId', PessoaController.pegaUmaMatricula)

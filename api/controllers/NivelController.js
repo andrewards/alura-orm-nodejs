@@ -1,4 +1,6 @@
-const database = require('../models');
+// const database = require('../models');
+const { NiveisServices } = require('../services');
+const niveis = new NiveisServices();
 
 class NivelController {
 
@@ -18,7 +20,7 @@ class NivelController {
 
     static pegaTodosOsNiveis = async (req, res) => {
         try {
-            const todosOsNiveis = await database.niveis.findAll();
+            const todosOsNiveis = await niveis.read();
             return res.status(200).json(todosOsNiveis);
         } catch(err) {
             return res.status(500).json(err.message);
