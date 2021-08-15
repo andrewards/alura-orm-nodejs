@@ -1,7 +1,10 @@
-const database = require('../models');
-const { literal }  = require('sequelize');
+// const database = require('../models');
+// const { literal }  = require('sequelize');
 
-class PessoaController {
+const Services = require('../services/Services');
+const pessoas = new Services('pessoas');
+
+class PessoaController { 
 
     // CREATE
 
@@ -30,7 +33,7 @@ class PessoaController {
 
     static pegaTodasAsPessoasAtivas = async (req, res) => {
         try {
-            const pessoasAtivas = await database.pessoas.findAll();
+            const pessoasAtivas = await pessoas.read();
             return res.status(200).json(pessoasAtivas);
         } catch(err) {
             return res.status(500).json(err.message);
