@@ -20,6 +20,7 @@ const router = Router()
     .patch('/pessoas/:id', PessoaController.atualizaPessoa)
     .patch('/pessoas/:id/restaura', PessoaController.restauraPessoa)
     .patch('/pessoas/:estudanteId/matricula/:matriculaId', PessoaController.atualizaMatricula)
+    .patch('/pessoas/:estudanteId/cancela', PessoaController.cancelaPessoa)
 
 // DELETE
     .delete('/pessoas/:id', PessoaController.apagaPessoa)
