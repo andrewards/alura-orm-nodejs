@@ -18,8 +18,18 @@ class Services {
 
     }
 
-    async update (update, id) {
+    async update (update, id, transaction={}) {
+        return this.model.update(update, {
+            where: {
+                id: Number(id),
+            },
+        }, transaction);
+    }
 
+    async updates(update, where, transaction={}) {
+        return this.model.update(update, {
+            where: { ...where },
+        }, transaction);
     }
 
     async delete (id) {

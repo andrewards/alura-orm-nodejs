@@ -1,5 +1,5 @@
-// const database = require('../models');
-// const { literal }  = require('sequelize');
+const database = require('../models');
+const { literal }  = require('sequelize');
 
 const { PessoasServices } = require('../services');
 const pessoas = new PessoasServices();
@@ -176,21 +176,7 @@ class PessoaController {
         const { estudanteId } = req.params;
         const transaction = await database.sequelize.transaction();
         try {
-            await database.pessoas.update({
-                ativo: false,
-            }, {
-                where: {
-                    id: Number(estudanteId),
-                },
-            }, { transaction });
-            await database.matriculas.update({
-                status: 'cancelado',
-            }, {
-                where: {
-                    estudante_id: Number(estudanteId),
-                },
-            }, { transaction });
-            
+            await pessoas.cancelaPessoaEMatriculas(estudanteId, transaction);            
             await transaction.commit();
             return res.status(204).json();
         } catch(err) {
