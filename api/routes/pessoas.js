@@ -5,7 +5,7 @@ const router = Router()
 
 // CREATE
     .post('/pessoas', PessoaController.criaPessoa)
-    .post('/pessoas/:estudanteId/matricula', PessoaController.criaMatricula)
+    .post('/pessoas/:estudanteId/matriculas', PessoaController.criaMatricula)
 
 // READ
     .get('/pessoas', PessoaController.pegaTodasAsPessoasAtivas)
